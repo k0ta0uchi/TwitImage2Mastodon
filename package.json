@@ -1,0 +1,19 @@
+{
+  "name": "twitimage2mastodon",
+  "version": "1.0.0",
+  "description": "sync twitter images with specified hashtag to mastodon",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "k0ta0uchi",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "https": "^1.0.0",
+    "mastodon": "^1.2.1",
+    "mastodon-api": "^1.3.0",
+    "readline-sync": "^1.4.7",
+    "twit": "^2.2.9"
+  }
+}
