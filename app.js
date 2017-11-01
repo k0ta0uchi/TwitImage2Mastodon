@@ -45,7 +45,11 @@ stream.on('tweet', (tweet) => {
     var text = tweet.text
     text = text.replace(/https:\/\/t\.co\/.*$/, '')
     
-    // download image first.
+    // check if image or video exists
+    if (undefined === tweet.extended_entities.media[0])
+     return
+    
+     // download image first.
     var media = tweet.extended_entities.media[0]
     let ext = '.jpg'
     let media_url = media.media_url_https
