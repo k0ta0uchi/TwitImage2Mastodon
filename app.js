@@ -10,7 +10,7 @@ try {
 } catch (e) {
   // auth process.
   auth()
-  return;
+  return
 }
 
 if (pref.twitter.consumer_key === '') {
@@ -37,7 +37,10 @@ var user = pref.twitter.userid
 var stream = T.stream('user', [user])
 
 stream.on('tweet', (tweet) => {
-  if (tweet.user.screen_name === user && tweet.text.indexOf('#NintendoSwitch') !== -1) { 
+  if (tweet.user.screen_name === user) {
+    if (pref.twitter.hashtag !== '' && tweet.text.indexOf(pref.twitter.hashtag) === -1)
+      return 
+    
     // delete twitter url
     var text = tweet.text
     text = text.replace(/https:\/\/t\.co\/.*$/, '')

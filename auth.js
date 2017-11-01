@@ -40,7 +40,8 @@
             consumer_secret: '',
             access_token: '',
             access_token_secret: '',
-            userid: ''
+            userid: '',
+            hashtag: ''
           }
         }), 'utf-8')
     })
