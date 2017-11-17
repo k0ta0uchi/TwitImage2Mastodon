@@ -38,15 +38,17 @@ var stream = T.stream('user', [user])
 
 stream.on('tweet', (tweet) => {
   if (tweet.user.screen_name === user) {
+
+    // hashtags
     var hashtags = pref.twitter.hashtag;
     if (hashtags.length > 0)
     {
+      let isHashtag = false;
       for(let i = 0; i < hashtags.length; i++) {
-        if (tweet.text.indexOf(hashtags[i]) === -1)
-          return
-      }      
-    } else {
-      return
+        if (tweet.text.indexOf(hashtags[i]) !== -1)
+          isHashtag = true; break
+      }
+      if (!isHashtag) return      
     }
   
     // delete twitter url
