@@ -38,9 +38,17 @@ var stream = T.stream('user', [user])
 
 stream.on('tweet', (tweet) => {
   if (tweet.user.screen_name === user) {
-    if (pref.twitter.hashtag !== '' && tweet.text.indexOf(pref.twitter.hashtag) === -1)
-      return 
-    
+    var hashtags = pref.twitter.hashtag;
+    if (hashtags.length > 0)
+    {
+      for(let i = 0; i < hashtags.length; i++) {
+        if (tweet.text.indexOf(hashtags[i]) === -1)
+          return
+      }      
+    } else {
+      return
+    }
+  
     // delete twitter url
     var text = tweet.text
     text = text.replace(/https:\/\/t\.co\/.*$/, '')
