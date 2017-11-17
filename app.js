@@ -45,8 +45,11 @@ stream.on('tweet', (tweet) => {
     {
       let isHashtag = false;
       for(let i = 0; i < hashtags.length; i++) {
-        if (tweet.text.indexOf(hashtags[i]) !== -1)
-          isHashtag = true; break
+        if (~tweet.text.indexOf(hashtags[i]))
+        {
+          isHashtag = true
+          break
+        }
       }
       if (!isHashtag) return      
     }
